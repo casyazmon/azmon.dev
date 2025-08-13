@@ -1,6 +1,6 @@
 'use client'
 import React, { useState, useEffect } from 'react'
-import { FaGithub, FaLinkedin } from 'react-icons/fa'
+import { FaGithub, FaLinkedin, FaTiktok } from 'react-icons/fa'
 import { SiX } from 'react-icons/si'
 
 
@@ -110,7 +110,7 @@ const Sidebar = () => {
             <FaGithub size={20} className="text-black hover:text-gray-600 transition" />
           </a>
           <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-            <FaLinkedin size={20} className="text-black hover:text-gray-700 transition" />
+            <FaTiktok size={20} className="text-black hover:text-gray-700 transition" />
           </a>
           <a href="https://linkedin.com/in/akap-azmon" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
             <FaLinkedin size={20} className="text-black hover:text-gray-700 transition" />

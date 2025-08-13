@@ -12,7 +12,7 @@ This repository contains the source code for my personal portfolio website.
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/yourusername/portfolio.git
+    git clone https://github.com/casyazmon/azmon.dev.git
     ```
 2. Open `index.html` in your browser.
 
