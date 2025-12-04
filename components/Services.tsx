@@ -3,39 +3,51 @@ import React from 'react'
 
 const Services = () => {
   return (
-    <section id="services" className="bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100 p-0 m-0">
-      <div className=" container mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 align-middle gap-2">
-          <div className="hover:shadow-lg transition-shadow duration-300 flex  flex-col h-full align-middle justify-center px-4 gap-3 py-6">
-            <h3 className="text-xl font-semibold">Mobile & Web<br/> Development</h3>
-            <p className="text-gray-600 ">Build sleek, scalable Android apps using Kotlin or Java. From Firebase auth to custom UI, I bring apps to life across devices with performance and polish.</p>
-          </div>
-          
-          <div className="hover:shadow-lg transition-shadow duration-300 flex  flex-col h-full align-middle justify-center px-4 gap-3 py-6">
-            <h3 className="text-xl font-semibold">Backend API<br/> Development</h3>
-            <p className="text-gray-600 ">Design secure, RESTful APIs and backend systems with Spring Boot or Node.js. From auth and database layers to container-ready microservices—I build scalable foundations.</p>
+    <section
+      id="services"
+      className="bg-stone-50 dark:bg-stone-950 text-stone-800 dark:text-stone-200 py-20"
+    >
+      <div className="container mx-auto px-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
+
+          {/* Card 1 */}
+          <div className="group hover:shadow-md transition-all duration-500 flex flex-col h-full justify-center px-8 py-10 bg-white dark:bg-stone-900 rounded-2xl border border-stone-100 dark:border-stone-800">
+            <h3 className="text-2xl font-light mb-4 tracking-wide text-stone-900 dark:text-stone-100">Digital<br /> Craftsmanship</h3>
+            <p className="text-stone-600 dark:text-stone-400 leading-relaxed font-light">
+              Building fluid, responsive applications that live on the web and in your pocket. From pixel-perfect UIs to robust logic, I create experiences that feel natural.
+            </p>
           </div>
 
-          <div className=" hover:shadow-lg transition-shadow duration-300 flex flex-col h-full mx-3.5">
+          {/* Card 2 */}
+          <div className="group hover:shadow-md transition-all duration-500 flex flex-col h-full justify-center px-8 py-10 bg-white dark:bg-stone-900 rounded-2xl border border-stone-100 dark:border-stone-800">
+            <h3 className="text-2xl font-light mb-4 tracking-wide text-stone-900 dark:text-stone-100">System<br /> Architecture</h3>
+            <p className="text-stone-600 dark:text-stone-400 leading-relaxed font-light">
+              Designing the invisible backbone of your product. Secure, scalable APIs and microservices that handle the heavy lifting with grace and speed.
+            </p>
+          </div>
+
+          {/* Image Card */}
+          <div className="flex flex-col h-full rounded-2xl overflow-hidden relative group">
             <Image
               src="/kasina.png"
               alt="Akap Azmon"
-              width={400}
-              height={400}
-              className="w-full h-80 object-cover"
+              fill
+              className="object-cover transition-transform duration-700 group-hover:scale-105"
             />
+            <div className="absolute inset-0 bg-stone-900/10 group-hover:bg-transparent transition-colors duration-500" />
           </div>
 
-          <div className="hover:shadow-lg transition-shadow duration-300 flex  flex-col h-full align-middle justify-center px-4 gap-3">
-            <h3 className="text-xl font-semibold">Full-Stack<br/> Web Development</h3>
-            <p className="text-gray-600">Deliver fast, responsive web apps using React.js, Next.js, and Tailwind. Whether SSR, CMS integration, or full-stack e-commerce—I’ve got your stack covered.</p>
+          {/* Card 3 */}
+          <div className="group hover:shadow-md transition-all duration-500 flex flex-col h-full justify-center px-8 py-10 bg-white dark:bg-stone-900 rounded-2xl border border-stone-100 dark:border-stone-800">
+            <h3 className="text-2xl font-light mb-4 tracking-wide text-stone-900 dark:text-stone-100">Holistic<br /> Solutions</h3>
+            <p className="text-stone-600 dark:text-stone-400 leading-relaxed font-light">
+              Bridging the gap between form and function. I deliver complete, end-to-end solutions where every layer communicates perfectly.
+            </p>
           </div>
+
         </div>
       </div>
-      
-        
     </section>
-
   )
 }
 

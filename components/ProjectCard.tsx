@@ -12,15 +12,15 @@ interface ProjectCardProps {
 
 const ProjectCard = ({ project }: ProjectCardProps) => {
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
-      
-        {project.imageUrl && (
-            <img
-            src={project.imageUrl}
-            alt={project.title}
-            className="w-full h-108 object-cover rounded-md mb-4"
-            />
-        )}
+    <div className="bg-white dark:bg-stone-800 rounded-lg shadow-md p-6">
+
+      {project.imageUrl && (
+        <img
+          src={project.imageUrl}
+          alt={project.title}
+          className="w-full h-108 object-cover rounded-md mb-4"
+        />
+      )}
       <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
       <p className="text-gray-700 dark:text-gray-300 mb-4">{project.description}</p>
       <div className="flex flex-wrap gap-2">

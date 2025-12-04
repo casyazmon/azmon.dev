@@ -7,12 +7,12 @@ const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false)
 
   return (
-    <header className="py-4 border-b border-gray-200 dark:border-gray-800">
+    <header className="py-4 border-b border-stone-200 dark:border-stone-800">
       <div className="container mx-auto flex justify-between items-center px-4">
         <h1 className="text-4xl font-bold">A~Z</h1>
         {/* Hamburger for mobile */}
         <button
-          className="md:hidden flex items-center px-2 py-1 border rounded text-gray-700 dark:text-gray-200 border-gray-400 dark:border-gray-600"
+          className="md:hidden flex items-center px-2 py-1 border rounded text-stone-700 dark:text-stone-200 border-stone-400 dark:border-stone-600"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
         >
@@ -27,7 +27,7 @@ const Header = () => {
             <Link href="#services" id='' className="hover:underline">Services</Link>
             <Link href="#experience" id='' className="hover:underline">Experiences</Link>
             <Link href="#projects" id='' className="hover:underline">Project</Link>
-            <Link href="#blog" id='' className="hover:underline">Blog & News</Link>
+            <Link href="/blog" id='' className="hover:underline">Blog & News</Link>
 
             <Link href="#contact" className="hover:underline">Contact</Link>
           </nav>

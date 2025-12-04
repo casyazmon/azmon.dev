@@ -10,25 +10,25 @@ export const metadata: Metadata = {
   description: "Software Engineer",
 };
 
-export default function RootLayout({   children, }: Readonly<{
+export default function RootLayout({ children, }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100">
+      <body className="bg-stone-50 text-stone-900 dark:bg-stone-950 dark:text-stone-100">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem={true}
           disableTransitionOnChange={true}>
-          <Header/>
+          <Header />
           <main className=" mx-auto min-h-screen">
             {children}
           </main>
-          <Footer/>
+          <Footer />
         </ThemeProvider>
       </body>
-      
+
     </html>
   );
 }

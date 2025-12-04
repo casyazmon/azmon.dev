@@ -30,7 +30,7 @@ const Sidebar = () => {
       <div className="fixed top-4 left-4 z-[1001] sm:hidden">
         <button
           onClick={() => setIsOpen(true)}
-          className="p-2 rounded-md bg-gray-800 text-white"
+          className="p-2 rounded-md bg-stone-800 text-stone-50"
           aria-label="Open menu"
         >
           ☰
@@ -41,20 +41,20 @@ const Sidebar = () => {
       {isOpen && (
         <div
           onClick={() => setIsOpen(false)}
-          className="fixed inset-0 bg-black bg-opacity-40 z-[999] sm:hidden"
+          className="fixed inset-0 bg-stone-900/40 backdrop-blur-sm z-[999] sm:hidden"
         />
       )}
 
       {/* Sidebar */}
       <div
-        className={`fixed top-0 left-0 h-screen w-[80vw] sm:w-[90px] bg-white border-r border-gray-300 z-[1002]
+        className={`fixed top-0 left-0 h-screen w-[80vw] sm:w-[90px] bg-white dark:bg-stone-900 border-r border-stone-200 dark:border-stone-800 z-[1002]
         transition-transform duration-300 ease-in-out
         ${isOpen ? 'translate-x-0' : '-translate-x-full'} sm:translate-x-0 sm:flex
-        flex-col justify-between items-center pt-6 pb-6`}
+        flex-col justify-between items-center pt-8 pb-8`}
       >
         {/* Close button (mobile only) */}
         <button
-          className="absolute top-4 right-4 sm:hidden text-gray-500 text-2xl"
+          className="absolute top-4 right-4 sm:hidden text-stone-500 text-2xl"
           onClick={() => setIsOpen(false)}
           aria-label="Close menu"
         >
@@ -62,61 +62,28 @@ const Sidebar = () => {
         </button>
 
         {/* Logo */}
-        <a href="/" className="mb-6 flex items-center justify-center">
-          <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-            <circle cx="16" cy="16" r="14" stroke="#555" strokeWidth="2" />
-            <text
-              x="16"
-              y="21"
-              textAnchor="middle"
-              fontSize="14"
-              fill="#555"
-              fontFamily="Arial"
-              fontWeight="bold"
-            >
-              AZ
-            </text>
-          </svg>
+        <a href="/" className="mb-6 flex items-center justify-center group">
+          <div className="w-10 h-10 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center border border-stone-200 dark:border-stone-700 group-hover:border-stone-400 transition-colors">
+            <span className="font-bold text-sm text-stone-800 dark:text-stone-200">AZ</span>
+          </div>
         </a>
 
-        {/* Navigation Links */}
-        {/* <nav className="flex flex-col items-center gap-6">
-          <a href="#experience" className="text-gray-800 hover:text-black transition-colors">
-            Experience
-          </a>
-          <a href="#services" className="text-gray-800 hover:text-black transition-colors">
-            Services
-          </a>
-          <a href="#projects" className="text-gray-800 hover:text-black transition-colors">
-            Projects
-          </a>
-          <a href="#contact" className="text-gray-800 hover:text-black transition-colors">
-            Contact
-          </a>
-          <a href="#blog" className="text-gray-800 hover:text-black transition-colors">
-            Blog
-          </a>
-          <a href="#about" className="text-gray-800 hover:text-black transition-colors">
-            About
-          </a>
-        </nav> */}
-
         {/* Social Icons */}
-        <div className="flex flex-col items-center gap-5">
+        <div className="flex flex-col items-center gap-6">
           <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter/X">
-            <SiX size={20} className="text-black hover:text-gray-700 transition" />
+            <SiX size={20} className="text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors" />
           </a>
           <a href="https://github.com/casyazmon" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-            <FaGithub size={20} className="text-black hover:text-gray-600 transition" />
+            <FaGithub size={20} className="text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors" />
           </a>
           <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-            <FaTiktok size={20} className="text-black hover:text-gray-700 transition" />
+            <FaTiktok size={20} className="text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors" />
           </a>
           <a href="https://linkedin.com/in/akap-azmon" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-            <FaLinkedin size={20} className="text-black hover:text-gray-700 transition" />
+            <FaLinkedin size={20} className="text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors" />
           </a>
-          </div>
         </div>
+      </div>
     </>
   )
 }

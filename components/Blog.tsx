@@ -53,65 +53,64 @@ const Blog = () => {
   ];
 
   return (
-    <section id="blog"  className="py-50">
-      <div className="container mx-auto px-4 py-12">
-        <h2 className="text-2xl md:text-4xl font-bold text-black dark:text-white mb-16">
+    <section id="blog" className="py-24 bg-stone-50 dark:bg-stone-950">
+      <div className="container mx-auto px-6">
+        <h2 className="text-4xl md:text-5xl font-light text-stone-900 dark:text-stone-100 mb-16 tracking-tight">
           Latest Blog Posts
         </h2>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 ">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Featured Blog */}
-          <div className="col-span-1 lg:col-span-1 bg-gray-50 dark:text-white">
-            <img
-              src="https://i.pinimg.com/736x/d0/1b/23/d01b23e881e673ca71214c078edd031f.jpg"
-              alt="kasina azmon"
-              className="w-full md:h-100 aspect-video object-cover mb-4 rounded-tl-lg rounded-tr-lg md:rounded-tl-lg md:rounded-tr-lg "
-            />
-            <div className="flex flex-col gap-4 px-4">
-              <h3 className="text-xl md:text-2xl font-semibold text-black dark:text-white mb-2 ">
+          <div className="col-span-1 lg:col-span-1 group cursor-pointer">
+            <div className="overflow-hidden rounded-2xl mb-6">
+              <img
+                src="https://i.pinimg.com/736x/d0/1b/23/d01b23e881e673ca71214c078edd031f.jpg"
+                alt="kasina azmon"
+                className="w-full aspect-video object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+            </div>
+            <div className="flex flex-col gap-3">
+              <span className="text-sm font-medium text-stone-500 uppercase tracking-wider">Featured</span>
+              <h3 className="text-2xl md:text-3xl font-medium text-stone-900 dark:text-stone-100 group-hover:text-stone-600 dark:group-hover:text-stone-300 transition-colors">
                 Featured Blog Post
               </h3>
-              <p className="text-gray-600 dark:text-gray-300 text-sm md:text-base mb-4">
+              <p className="text-stone-600 dark:text-stone-400 text-base md:text-lg leading-relaxed font-light">
                 Discover the latest trends in web development and design. This featured post covers everything you need to know about modern web technologies.
               </p>
               <a
                 href="/blog/featured-post"
-                className="text-blue-600 dark:text-blue-400 hover:underline text-sm font-medium"
+                className="text-stone-900 dark:text-stone-100 font-medium inline-flex items-center gap-2 mt-2"
               >
-                Read More →
+                Read More <span className="transition-transform group-hover:translate-x-1">&rarr;</span>
               </a>
 
             </div>
           </div>
 
           {/* Blog List */}
-          <div className="lg:col-span-1 flex flex-col gap-6">
+          <div className="lg:col-span-1 flex flex-col gap-8">
             {blogData.map((blog, index) => (
               <div
                 key={index}
-                className="flex justify-between gap-6 pb-6 border-b border-gray-200 dark:border-gray-700"
+                className="group flex gap-6 pb-8 border-b border-stone-200 dark:border-stone-800 last:border-0"
               >
-                <img
-                  src={blog.image}
-                  alt={blog.title}
-                  className="w-30 h-30  md:w-48 md:h-40 object-cover rounded-md"
-                />
+                <div className="overflow-hidden rounded-xl w-32 h-24 md:w-48 md:h-32 flex-shrink-0">
+                  <img
+                    src={blog.image}
+                    alt={blog.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
                 <div className="flex flex-col flex-1 justify-center">
-                  <p className="text-sm text-gray-500 dark:text-gray-400 mb-1">
-                    {blog.category} -{" "}
+                  <p className="text-xs font-medium text-stone-500 dark:text-stone-500 mb-2 uppercase tracking-wide">
+                    {blog.category}
                   </p>
-                  <h3 className="text-[16px] md:text-xl font-semibold text-black dark:text-white mb-2">
+                  <h3 className="text-lg md:text-xl font-medium text-stone-900 dark:text-stone-100 mb-2 group-hover:text-stone-600 dark:group-hover:text-stone-300 transition-colors">
                     {blog.title}
                   </h3>
-                  <p className="hidden md:block text-gray-600 dark:text-gray-300 text-sm md:text-base mb-1">
+                  <p className="hidden md:block text-stone-600 dark:text-stone-400 text-sm leading-relaxed font-light line-clamp-2">
                     {blog.except}
                   </p>
-                  <a
-                    href={blog.link}
-                    className="text-blue-600 dark:text-blue-400 hover:underline text-sm font-medium"
-                  >
-                    Read More →
-                  </a>
                 </div>
               </div>
             ))}
