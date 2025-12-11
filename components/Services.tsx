@@ -5,9 +5,12 @@ const Services = () => {
   return (
     <section
       id="services"
-      className="bg-stone-50 dark:bg-stone-950 text-stone-800 dark:text-stone-200 py-20"
+      className="bg-stone-50 dark:bg-stone-950 text-stone-800 dark:text-stone-200 py-10"
     >
       <div className="container mx-auto px-6">
+        <h2 className="text-4xl font-light text-stone-900 dark:text-stone-100 mb-12 tracking-tight">
+          Services
+        </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
 
           {/* Card 1 */}

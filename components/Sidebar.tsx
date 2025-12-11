@@ -25,7 +25,7 @@ const Sidebar = () => {
   }, [])
 
   return (
-    <>
+    <div className="hidden sm:block">
       {/* Toggle Button (Mobile Only) */}
       <div className="fixed top-4 left-4 z-[1001] sm:hidden">
         <button
@@ -62,14 +62,22 @@ const Sidebar = () => {
         </button>
 
         {/* Logo */}
-        <a href="/" className="mb-6 flex items-center justify-center group">
-          <div className="w-10 h-10 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center border border-stone-200 dark:border-stone-700 group-hover:border-stone-400 transition-colors">
-            <span className="font-bold text-sm text-stone-800 dark:text-stone-200">AZ</span>
-          </div>
+        <div className="flex flex-col items-center gap-6 mb-10">
+          {/* Placeholder for Logo */}
+          <div className="text-4xl font-bold text-stone-900 dark:text-stone-100">A</div>
+        </div>
+
+        <a href="mailto:akap@azmon.dev" className="mb-6 flex items-center justify-center group">
+          <p className="[writing-mode:vertical-rl] text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors text-sm">
+            akap@azmon.dev
+          </p>
         </a>
 
         {/* Social Icons */}
         <div className="flex flex-col items-center gap-6">
+          <a href="https://linkedin.com/in/akap-azmon" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <FaLinkedin size={20} className="text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors" />
+          </a>
           <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter/X">
             <SiX size={20} className="text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors" />
           </a>
@@ -79,12 +87,10 @@ const Sidebar = () => {
           <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
             <FaTiktok size={20} className="text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors" />
           </a>
-          <a href="https://linkedin.com/in/akap-azmon" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-            <FaLinkedin size={20} className="text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors" />
-          </a>
+
         </div>
       </div>
-    </>
+    </div>
   )
 }
 

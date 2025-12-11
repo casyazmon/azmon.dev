@@ -46,7 +46,18 @@ export default function BlogPage() {
                         <div className="p-6 h-full flex flex-col">
                             <div className="flex items-center text-xs text-stone-500 mb-3 space-x-2">
                                 <time dateTime={metadata.date}>
-                                    {format(new Date(metadata.date), 'MMMM d, yyyy')}
+                                    {(() => {
+                                        try {
+                                            const date = new Date(metadata.date);
+                                            // Check if date is valid
+                                            if (isNaN(date.getTime())) {
+                                                return metadata.date;
+                                            }
+                                            return format(date, 'MMMM d, yyyy');
+                                        } catch (error) {
+                                            return metadata.date;
+                                        }
+                                    })()}
                                 </time>
                                 <span>•</span>
                                 <span>{metadata.readingTime}</span>

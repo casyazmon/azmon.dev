@@ -1,3 +1,4 @@
+"use client"
 import Image from 'next/image'
 import React from 'react'
 
@@ -7,33 +8,21 @@ const Hero = () => {
       {/* Background decoration */}
       <div className="absolute top-0 right-0 -z-10 w-1/2 h-full bg-gradient-to-l from-stone-100/50 to-transparent dark:from-stone-900/50" />
 
-      <div className="container flex flex-col-reverse lg:flex-row justify-between items-center mx-auto px-6 py-20 lg:py-32 gap-12 lg:gap-20">
+      <div className="container flex flex-col-reverse lg:flex-row justify-center items-center mx-auto px-6 pt-20 pb-5 lg:py-32 gap-12 lg:gap-20">
 
-        {/* Left Content (formerly right in code structure, but visually left usually? The original code had them swapped in flex-col vs lg:flex-row. Let's keep the structure but refine styles) */}
-        {/* Actually, looking at the original code:
-            div 1: "Name: Akap Azmon" (hidden lg:flex) -> This seems to be a sidebar-ish info block?
-            div 2: "FullStack Software Developer" -> Main hero text.
-            
-            The original code had `flex-col` for mobile and `lg:flex-row`.
-            Let's stick to a clean layout.
-        */}
-
-        <div className="hidden lg:flex flex-col items-start space-y-6 text-stone-600 dark:text-stone-400">
-          <div className="border-b border-stone-200 dark:border-stone-800 pb-4 mb-2 w-full">
-            <h2 className="text-lg font-medium text-stone-900 dark:text-stone-100">Akap Azmon</h2>
-            <p className="text-sm">Software Engineer</p>
-          </div>
-
-          <div className="space-y-1">
-            <span className="text-xs uppercase tracking-widest font-semibold text-stone-400 dark:text-stone-500">Specialized In</span>
-            <p className="text-base font-light">Android (Java & Kotlin)</p>
-            <p className="text-base font-light">JavaScript (React, Next.js)</p>
-            <p className="text-base font-light">Scalable Backend Systems</p>
-          </div>
+        {/* Image Section */}
+        <div className="relative w-full max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl aspect-[4/5] lg:w-2/5 flex-shrink-0">
+          <Image
+            src="/azmon akap.png"
+            alt="Headshot"
+            width={500}
+            height={500}
+            className="object-cover rounded-full shadow-xl"
+          />
         </div>
 
         {/* Main Hero Text */}
-        <div className="flex flex-col max-w-2xl">
+        <div className="flex flex-col max-w-2xl lg:w-3/5"> {/* Allow text to take remaining space */}
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-light mb-6 leading-tight text-stone-900 dark:text-stone-100 tracking-tight">
             FullStack <br />
             <span className="font-semibold">Software Developer.</span>
@@ -45,15 +34,15 @@ const Hero = () => {
             design, and meaningful impact.
           </p>
 
+          {/* Download resume link */}
           <button
             type="button"
-            className="group flex items-center text-base md:text-lg font-medium px-8 py-4 bg-stone-900 text-stone-50 dark:bg-stone-100 dark:text-stone-900 rounded-full self-start hover:bg-stone-800 dark:hover:bg-white transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
+            className=" font-medium px-8 py-4 bg-stone-900 text-stone-50 dark:bg-stone-100 dark:text-stone-900 rounded-full self-start hover:bg-stone-800 dark:hover:bg-white transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5 cursor-pointer "
+            onClick={() => window.open('/akap azmon.pdf', '_blank')}
           >
-            See My Work
-            <span className="ml-3 transform translate-x-0 group-hover:translate-x-1 transition-transform duration-300">
-              &rarr;
-            </span>
+            Download Resume
           </button>
+
         </div>
 
       </div>

@@ -23,7 +23,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     const post = await getPostHtml(slug) as unknown as Post;
 
     return (
-        <article className="max-w-3xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+        <article className=" prose max-w-3xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
             <Link
                 href="/blog"
                 className="inline-flex items-center text-stone-500 hover:text-stone-800 transition-colors mb-8 group"
