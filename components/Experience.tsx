@@ -1,5 +1,5 @@
+'use client';
 import React from 'react';
-import ExperienceItem from './ExperienceItem';
 
 const Experience = () => {
     // Data for experience entries
@@ -13,6 +13,7 @@ const Experience = () => {
                 "Built responsive Android and web applications using Java, Kotlin, Jetpack Compose, React.js, and Next.js",
                 "Created and consumed RESTful APIs; integrated Google Maps, Firebase Auth, AWS services",
             ],
+            tech: ["Java", "Kotlin", "React.js", "Next.js", "Firebase", "AWS"]
         },
         {
             company: "Government Bilingual High School",
@@ -23,69 +24,78 @@ const Experience = () => {
                 "Designed and taught programming fundamentals using C, C++, Java, and SQL",
                 "Supervised student-led software projects simulating professional SDLC workflows",
             ],
+            tech: ["C", "C++", "Java", "SQL"]
         },
-
     ];
 
     return (
-        <section className='container mx-auto px-6 py-24' id="experience">
-            <div className='grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16'>
-                {/* About Me Section - now taking one column on large screens */}
-                <div className='lg:col-span-1 flex flex-col items-start'>
-                    <h2 className="text-4xl font-light text-stone-900 dark:text-stone-100 mb-8 tracking-tight">
-                        About Me
-                    </h2>
-                    <div className='prose prose-stone dark:prose-invert text-lg font-light leading-relaxed text-stone-600 dark:text-stone-400 mb-10'>
-                        <p>
-                            Hi! I&apos;m Akap Azmon, an Ottawa-based full-stack software developer passionate about
-                            building clean, scalable systems with real-world impact. With extensive experience
-                            crafting Android apps, backend APIs, and cloud-ready platforms using Java, Kotlin,
-                            Spring Boot, and Firebase, I&apos;ve delivered solutions for telemedicine, e-commerce,
-                            and LMS platforms. As a former computer science instructor and certified Kubernetes
-                            Associate, I value collaboration, clean architecture, and continuous learning,
-                            and I&apos;m actively seeking remote software development roles to build great
-                            things with great teams.
-                        </p>
-                    </div>
+        <section className='container mx-auto px-6 py-24 bg-background' id="experience">
+            <h2 className="text-4xl md:text-5xl font-light text-foreground mb-4 tracking-tight font-mono">
+                <span className="text-secondary">$</span> cat experience.log
+            </h2>
+            <p className="text-secondary mb-16 font-mono text-sm">
+              // Professional journey and contributions
+            </p>
 
-                    <div className='flex flex-col sm:flex-row gap-4 w-full'>
-                        <button
-                            type="button"
-                            className="group flex items-center justify-center text-base font-medium px-8 py-3 bg-stone-900 text-stone-50 dark:bg-stone-100 dark:text-stone-900 rounded-full hover:bg-stone-700 dark:hover:bg-white transition-all duration-300 shadow-md hover:shadow-lg w-full sm:w-auto"
-                        >
-                            Download CV
-                            <span className="ml-2 transform translate-x-0 group-hover:translate-x-1 transition-transform duration-300">
-                                &rarr;
-                            </span>
-                        </button>
-                        {/* <button
-                            type="button"
-                            className="group flex items-center justify-center text-base font-medium px-8 py-3 border border-stone-300 dark:border-stone-700 text-stone-900 dark:text-stone-100 rounded-full hover:bg-stone-100 dark:hover:bg-stone-800 transition-all duration-300 w-full sm:w-auto"
-                        >
-                            Check My Portfolio
-                            <span className="ml-2 transform translate-x-0 group-hover:translate-x-1 transition-transform duration-300">
-                                &rarr;
-                            </span>
-                        </button> */}
-                    </div>
-                </div>
+            {/* Timeline */}
+            <div className="max-w-4xl space-y-12">
+                {experienceData.map((item, index) => (
+                    <div key={index} className="relative pl-8 border-l-2 border-border">
+                        {/* Timeline dot */}
+                        <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-foreground border-2 border-background" />
 
-                {/* Experience Section - now taking two columns on large screens */}
-                <div className='lg:col-span-2'>
-                    <h2 className="text-4xl font-light text-stone-900 dark:text-stone-100 mb-12 tracking-tight">
-                        Experience
-                    </h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        {experienceData.map((item, index) => (
-                            <div key={index} className="bg-white dark:bg-stone-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-                                <ExperienceItem {...item} />
-                            </div>
-                        ))}
+                        {/* Date */}
+                        <div className="font-mono text-sm text-secondary mb-2">
+                            {item.duration}
+                        </div>
+
+                        {/* Role and company */}
+                        <h3 className="text-xl md:text-2xl font-medium text-foreground mb-1">
+                            {item.title}
+                        </h3>
+                        <div className="text-secondary mb-4">
+                            {item.company} • {item.location}
+                        </div>
+
+                        {/* Responsibilities */}
+                        <ul className="space-y-2 mb-4 text-secondary">
+                            {item.responsibilities.map((resp, idx) => (
+                                <li key={idx} className="flex items-start gap-2">
+                                    <span className="text-accent mt-1.5">›</span>
+                                    <span>{resp}</span>
+                                </li>
+                            ))}
+                        </ul>
+
+                        {/* Tech stack badges */}
+                        <div className="flex flex-wrap gap-2">
+                            {item.tech.map((tech) => (
+                                <span
+                                    key={tech}
+                                    className="px-3 py-1 bg-surface border border-border text-xs font-mono text-foreground"
+                                >
+                                    {tech}
+                                </span>
+                            ))}
+                        </div>
                     </div>
-                </div>
+                ))}
+            </div>
+
+            {/* Download CV Button */}
+            <div className="mt-16">
+                <button
+                    type="button"
+                    className="group font-medium px-8 py-4 bg-foreground text-background hover:bg-accent transition-all duration-300 border border-foreground hover:border-accent font-mono text-sm md:text-base inline-flex items-center gap-2"
+                    onClick={() => window.open('/akap azmon.pdf', '_blank')}
+                >
+                    <span>$ download_cv</span>
+                    <span className="transform translate-x-0 group-hover:translate-x-1 transition-transform duration-300">→</span>
+                </button>
             </div>
         </section>
     );
 };
 
 export default Experience;
+

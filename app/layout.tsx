@@ -15,14 +15,14 @@ export default function RootLayout({ children, }: Readonly<{
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="bg-stone-50 text-stone-900 dark:bg-stone-950 dark:text-stone-100">
+      <body className="bg-background text-foreground">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem={true}
           disableTransitionOnChange={true}>
           <Header />
-          <main className=" mx-auto min-h-screen">
+          <main className="mx-auto min-h-screen">
             {children}
           </main>
           <Footer />
@@ -32,3 +32,4 @@ export default function RootLayout({ children, }: Readonly<{
     </html>
   );
 }
+

@@ -1,53 +1,97 @@
 "use client"
-import Image from 'next/image'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import GridBackground from './GridBackground'
 
 const Hero = () => {
+  const [typedText, setTypedText] = useState('')
+  const fullText = 'Backend Engineer'
+
+  // Typing animation effect
+  useEffect(() => {
+    let currentIndex = 0
+    const typingInterval = setInterval(() => {
+      if (currentIndex <= fullText.length) {
+        setTypedText(fullText.slice(0, currentIndex))
+        currentIndex++
+      } else {
+        clearInterval(typingInterval)
+      }
+    }, 80)
+
+    return () => clearInterval(typingInterval)
+  }, [])
+
   return (
-    <main className="relative overflow-hidden bg-stone-50 dark:bg-stone-950">
-      {/* Background decoration */}
-      <div className="absolute top-0 right-0 -z-10 w-1/2 h-full bg-gradient-to-l from-stone-100/50 to-transparent dark:from-stone-900/50" />
+    <main className="relative overflow-hidden bg-background">
+      {/* Grid background */}
+      <GridBackground pulse />
 
-      <div className="container flex flex-col-reverse lg:flex-row justify-center items-center mx-auto px-6 pt-20 pb-5 lg:py-32 gap-12 lg:gap-20">
+      <div className="container mx-auto px-6 pt-32 pb-24 lg:pt-40 lg:pb-32">
+        <div className="max-w-4xl">
 
-        {/* Image Section */}
-        <div className="relative w-full max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl aspect-[4/5] lg:w-2/5 flex-shrink-0">
-          <Image
-            src="/azmon akap.png"
-            alt="Headshot"
-            width={500}
-            height={500}
-            className="object-cover rounded-full shadow-xl"
-          />
-        </div>
+          {/* Terminal prompt */}
+          <div className="mb-8 font-mono text-sm md:text-base text-secondary">
+            <span className="text-accent">$</span> backend_engineer.init()
+          </div>
 
-        {/* Main Hero Text */}
-        <div className="flex flex-col max-w-2xl lg:w-3/5"> {/* Allow text to take remaining space */}
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-light mb-6 leading-tight text-stone-900 dark:text-stone-100 tracking-tight">
-            FullStack <br />
-            <span className="font-semibold">Software Developer.</span>
+          {/* Main heading with typing effect */}
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-light mb-6 leading-tight text-foreground tracking-tight">
+            <span className="font-mono">{typedText}</span>
+            <span className="terminal-cursor" />
           </h1>
 
-          <p className="text-lg md:text-xl text-stone-600 dark:text-stone-400 mb-10 leading-relaxed font-light max-w-xl">
-            I’m a self-driven software developer with over five years of experience. I’ve taught computer science,
-            built real-time medical platforms, and contributed to scalable web systems. I value clear code, user-first
-            design, and meaningful impact.
+          {/* Code comment style subtitle */}
+          <div className="font-mono text-lg md:text-xl text-secondary mb-8">
+            <span className="text-accent">//</span> Building scalable systems, APIs, and infrastructure
+          </div>
+
+          {/* Identity block */}
+          <div className="bg-surface border border-border rounded-lg p-6 md:p-8 mb-10 font-mono text-sm md:text-base max-w-2xl">
+            <div className="space-y-2 text-foreground">
+              <div>
+                <span className="text-secondary">const</span> developer = &#123;
+              </div>
+              <div className="pl-4">
+                <span className="text-secondary">name:</span> <span className="text-accent">"Akap Azmon"</span>,
+              </div>
+              <div className="pl-4">
+                <span className="text-secondary">role:</span> <span className="text-accent">"Backend Engineer"</span>,
+              </div>
+              <div className="pl-4">
+                <span className="text-secondary">experience:</span> <span className="text-accent">"5+ years"</span>,
+              </div>
+              <div className="pl-4">
+                <span className="text-secondary">focus:</span> [<span className="text-accent">"APIs"</span>, <span className="text-accent">"Systems"</span>, <span className="text-accent">"Data"</span>],
+              </div>
+              <div className="pl-4">
+                <span className="text-secondary">available:</span> <span className="text-green-500">true</span>
+              </div>
+              <div>&#125;;</div>
+            </div>
+          </div>
+
+          {/* Description */}
+          <p className="text-lg md:text-xl text-secondary mb-10 leading-relaxed max-w-2xl font-light">
+            Self-driven software developer specializing in backend systems. Built real-time medical platforms,
+            scalable web systems, and robust APIs. Focused on clean architecture, efficient data pipelines,
+            and meaningful impact.
           </p>
 
-          {/* Download resume link */}
+          {/* CTA Button */}
           <button
             type="button"
-            className=" font-medium px-8 py-4 bg-stone-900 text-stone-50 dark:bg-stone-100 dark:text-stone-900 rounded-full self-start hover:bg-stone-800 dark:hover:bg-white transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5 cursor-pointer "
+            className="group font-medium px-8 py-4 bg-foreground text-background hover:bg-accent transition-all duration-300 border border-foreground hover:border-accent font-mono text-sm md:text-base inline-flex items-center gap-2"
             onClick={() => window.open('/akap azmon.pdf', '_blank')}
           >
-            Download Resume
+            <span>$ download_resume</span>
+            <span className="transform translate-x-0 group-hover:translate-x-1 transition-transform duration-300">→</span>
           </button>
 
         </div>
-
       </div>
     </main>
   )
 }
 
 export default Hero
+

@@ -1,7 +1,5 @@
 import { getAllPosts } from "@/lib/posts";
 import Link from "next/link";
-import Image from "next/image";
-import { format } from "date-fns";
 
 interface Post {
     slug: string;
@@ -18,64 +16,47 @@ export default function BlogPage() {
     const posts = getAllPosts() as unknown as Post[];
 
     return (
-        <div className="max-w-5xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-                <h1 className="text-4xl font-bold text-stone-800 mb-4 tracking-tight">Writing</h1>
-                <p className="text-stone-600 text-lg max-w-2xl mx-auto">
-                    Thoughts, tutorials, and insights on development and design.
+        <div className="max-w-6xl mx-auto py-24 px-4 sm:px-6 lg:px-8 bg-background">
+            <div className="mb-16">
+                <h1 className="text-4xl md:text-5xl font-light text-foreground mb-4 tracking-tight font-mono">
+                    <span className="text-secondary">$</span> ls -la blog/
+                </h1>
+                <p className="text-secondary font-mono text-sm">
+                    // All technical writings and insights
                 </p>
             </div>
 
-            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                 {posts.map(({ slug, metadata }) => (
                     <Link
                         key={slug}
                         href={`/blog/${slug}`}
-                        className="group block bg-white rounded-xl overflow-hidden border border-stone-200 hover:border-stone-300 transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
+                        className="group block bg-surface border border-border p-6 hover:border-foreground transition-all duration-300"
                     >
-                        {metadata.image && (
-                            <div className="relative h-48 w-full">
-                                <Image
-                                    src={metadata.image}
-                                    alt={metadata.title}
-                                    fill
-                                    className="object-cover transition-transform duration-300 group-hover:scale-105"
-                                />
-                            </div>
-                        )}
-                        <div className="p-6 h-full flex flex-col">
-                            <div className="flex items-center text-xs text-stone-500 mb-3 space-x-2">
+                        <div className="flex flex-col h-full">
+                            {/* Metadata */}
+                            <div className="flex items-center text-xs font-mono text-secondary mb-4 space-x-2">
                                 <time dateTime={metadata.date}>
-                                    {(() => {
-                                        try {
-                                            const date = new Date(metadata.date);
-                                            // Check if date is valid
-                                            if (isNaN(date.getTime())) {
-                                                return metadata.date;
-                                            }
-                                            return format(date, 'MMMM d, yyyy');
-                                        } catch (error) {
-                                            return metadata.date;
-                                        }
-                                    })()}
+                                    {metadata.date}
                                 </time>
-                                <span>•</span>
+                                <span>|</span>
                                 <span>{metadata.readingTime}</span>
                             </div>
 
-                            <h2 className="text-xl font-bold text-stone-800 mb-3 group-hover:text-stone-600 transition-colors">
+                            {/* Title */}
+                            <h2 className="text-xl font-medium text-foreground mb-3 group-hover:text-accent transition-colors">
                                 {metadata.title}
                             </h2>
 
-                            <p className="text-stone-600 text-sm line-clamp-3 mb-4 flex-grow">
+                            {/* Excerpt */}
+                            <p className="text-secondary text-sm line-clamp-3 mb-4 flex-grow">
                                 {metadata.excerpt || "Read more about this topic..."}
                             </p>
 
-                            <div className="flex items-center text-stone-500 text-sm font-medium group-hover:text-stone-800 transition-colors">
-                                Read article
-                                <svg className="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                                </svg>
+                            {/* Read link */}
+                            <div className="flex items-center text-secondary text-sm font-mono group-hover:text-foreground transition-colors">
+                                read
+                                <span className="ml-2 transition-transform group-hover:translate-x-1">→</span>
                             </div>
                         </div>
                     </Link>
@@ -84,3 +65,4 @@ export default function BlogPage() {
         </div>
     );
 }
+

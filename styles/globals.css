@@ -1,24 +1,44 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500;600&display=swap');
 
 :root {
-  --background: #fafaf9;
-  /* stone-50 */
-  --foreground: #1c1917;
-  /* stone-900 */
+  /* Pure Black & White Palette - Light Mode */
+  --background: #FFFFFF;
+  --surface: #F5F5F5;
+  --border: #E0E0E0;
+  --text-primary: #000000;
+  --text-secondary: #666666;
+  --accent: #333333;
+  
+  /* Spacing System (4px grid) */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
 }
 
 .dark {
-  --background: #0c0a09;
-  /* stone-950 */
-  --foreground: #f5f5f4;
-  /* stone-100 */
+  /* Pure Black & White Palette - Dark Mode */
+  --background: #000000;
+  --surface: #0A0A0A;
+  --border: #1A1A1A;
+  --text-primary: #FFFFFF;
+  --text-secondary: #999999;
+  --accent: #CCCCCC;
 }
 
 @theme inline {
   --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-foreground: var(--text-primary);
+  --color-surface: var(--surface);
+  --color-border: var(--border);
+  --color-text-secondary: var(--text-secondary);
+  --color-accent: var(--accent);
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
 }
 
 html {
@@ -27,11 +47,161 @@ html {
 
 body {
   background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text-primary);
+  font-family: var(--font-sans);
   transition: background-color 0.3s ease, color 0.3s ease;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
+/* Terminal-style cursor animation */
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.terminal-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.2em;
+  background: var(--text-primary);
+  margin-left: 2px;
+  animation: blink 1s infinite;
+}
+
+/* Typing animation */
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+.typing-effect {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid var(--text-primary);
+  animation: typing 2s steps(40, end), blink 0.75s step-end infinite;
+}
+
+/* Slide up reveal animation */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-up {
+  animation: slideUp 0.6s ease-out forwards;
+}
+
+/* Border glow effect */
+@keyframes borderGlow {
+  from { 
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); 
+  }
+  to { 
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3); 
+  }
+}
+
+.dark .border-glow:hover {
+  animation: borderGlow 0.3s ease-out forwards;
+}
+
+.border-glow:hover {
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Grid background pattern */
+.grid-background {
+  background-image: 
+    linear-gradient(to right, var(--border) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--border) 1px, transparent 1px);
+  background-size: 20px 20px;
+  opacity: 0.3;
+}
+
+/* Grid pulse animation */
+@keyframes gridPulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.5; }
+}
+
+.grid-pulse {
+  animation: gridPulse 4s ease-in-out infinite;
+}
+
+/* Code block styling */
+.code-block {
+  font-family: var(--font-mono);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: var(--space-md);
+  overflow-x: auto;
+}
+
+/* Line numbers */
+.line-numbers {
+  counter-reset: line;
+}
+
+.line-numbers .line::before {
+  counter-increment: line;
+  content: counter(line);
+  display: inline-block;
+  width: 2em;
+  margin-right: 1em;
+  color: var(--text-secondary);
+  text-align: right;
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+}
+
+/* Terminal window style */
+.terminal-window {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.terminal-header {
+  background: var(--border);
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.terminal-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--text-secondary);
+}
+
+/* Monospace utility */
+.mono {
+  font-family: var(--font-mono);
+}
+
+/* Prose styling for markdown */
 .prose p {
   margin-bottom: 1rem;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

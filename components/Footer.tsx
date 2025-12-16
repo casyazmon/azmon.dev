@@ -2,9 +2,9 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <footer className='py-6 border-t border-stone-200 dark:border-stone-800 text-center text-sm text-stone-600 dark:text-stone-400'>
+    <footer className='py-6 border-t border-border text-center text-sm text-secondary bg-background font-mono'>
       <p>
-        &copy; {new Date().getFullYear()} Akap Azmon. All rights reserved.
+        © {new Date().getFullYear()} azmon.dev <span className="text-accent">// All rights reserved</span>
       </p>
     </footer>
   )

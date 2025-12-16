@@ -2,6 +2,7 @@ import { getPostSlugs, getPostHtml } from "@/lib/posts";
 import Link from "next/link";
 import Image from "next/image";
 import { format } from "date-fns";
+import { notFound } from "next/navigation";
 
 interface Post {
     slug: string;
@@ -21,6 +22,11 @@ export async function generateStaticParams() {
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
     const post = await getPostHtml(slug) as unknown as Post;
+
+    // If post doesn't exist, show 404
+    if (!post) {
+        notFound();
+    }
 
     return (
         <article className=" prose max-w-3xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
@@ -72,3 +78,4 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         </article>
     );
 }
+
