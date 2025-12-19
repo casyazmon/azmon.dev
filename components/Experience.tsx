@@ -5,26 +5,42 @@ const Experience = () => {
     // Data for experience entries
     const experienceData = [
         {
-            company: "Freelance Software Engineer",
-            duration: "Jan 2024 - Present",
-            title: "Software Engineer",
-            location: "Remote",
+            company: "Freelance Developer",
+            duration: "Mar 2024 - Present",
+            title: "Software Developer",
+            location: "Remote, Canada",
             responsibilities: [
-                "Built responsive Android and web applications using Java, Kotlin, Jetpack Compose, React.js, and Next.js",
-                "Created and consumed RESTful APIs; integrated Google Maps, Firebase Auth, AWS services",
+                "Designed and deployed scalable Java microservices with Spring Boot, improving system throughput by 30%",
+                "Built and integrated RESTful APIs with AWS services, reducing request latency by 25%",
+                "Conducted code reviews and mentored junior developers, contributing to sub-100ms API response times for critical workflows",
+                "Actively participated in Agile Scrum ceremonies, contributing to sprint planning and backlog refinement",
             ],
-            tech: ["Java", "Kotlin", "React.js", "Next.js", "Firebase", "AWS"]
+            tech: ["Java", "Spring Boot", "AWS", "REST APIs", "Microservices", "Agile/Scrum"]
         },
         {
-            company: "Government Bilingual High School",
-            duration: "Jan 2024 - Present",
-            title: "Computer Science Instructor",
-            location: "Baffoussam, Cameroon",
+            company: "WeCodeDesigns",
+            duration: "Apr 2020 - Feb 2024",
+            title: "Web Developer",
+            location: "Bafoussam, Cameroon",
             responsibilities: [
-                "Designed and taught programming fundamentals using C, C++, Java, and SQL",
-                "Supervised student-led software projects simulating professional SDLC workflows",
+                "Developed and maintained web platforms using Next.js, WordPress, and LMS tools, supporting e-learning use cases",
+                "Implemented server-side rendering and image optimization, improving initial load time by 60% and reducing bounce rate by 25%",
+                "Integrated third-party services including payment gateways, CRMs, and analytics tools",
+                "Collaborated closely with stakeholders to gather requirements and deliver features on schedule",
             ],
-            tech: ["C", "C++", "Java", "SQL"]
+            tech: ["Next.js", "WordPress", "React", "LMS", "Payment Integration", "Analytics"]
+        },
+        {
+            company: "Afkanerd Technologies",
+            duration: "Jan 2017 - Feb 2019",
+            title: "Full-Stack Developer",
+            location: "Bamenda, Cameroon",
+            responsibilities: [
+                "Built a telemedicine platform using React, Spring Boot, and PostgreSQL, serving 2,000+ users with real-time video and chat",
+                "Designed REST APIs and applied Redis caching, reducing latency by 35%",
+                "Containerized and deployed services to AWS ECS/EKS, improving deployment speed by 50%",
+            ],
+            tech: ["React", "Spring Boot", "PostgreSQL", "Redis", "AWS ECS/EKS", "Docker", "REST APIs"]
         },
     ];
 

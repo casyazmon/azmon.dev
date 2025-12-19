@@ -27,7 +27,7 @@ const Contact = () => {
               <span className="text-secondary">"phone":</span> <span className="text-accent">"+1-506-269-8812"</span>,
             </div>
             <div className="pl-4 text-foreground">
-              <span className="text-secondary">"location":</span> <span className="text-accent">"Ottawa, CA"</span>,
+              <span className="text-secondary">"location":</span> <span className="text-accent">"Toronto, CA"</span>,
             </div>
             <div className="pl-4 text-foreground">
               <span className="text-secondary">"availability":</span> <span className="text-green-500">true</span>

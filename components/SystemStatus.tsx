@@ -15,9 +15,9 @@ const SystemStatus: React.FC = () => {
                         <span className="text-foreground">ONLINE</span>
                     </div>
                     <div className="hidden md:block w-px h-4 bg-border" />
-                    <div>Ottawa, CA (EST)</div>
+                    <div>Toronto, CA (EST)</div>
                     <div className="hidden md:block w-px h-4 bg-border" />
-                    <div>Backend Engineer</div>
+                    <div>Full-Stack Engineer</div>
                     <div className="hidden md:block w-px h-4 bg-border" />
                     <div>Response: &lt;24h</div>
                 </div>

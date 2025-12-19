@@ -31,6 +31,7 @@ const Header = () => {
             <Link href="#about" className="text-secondary hover:text-foreground transition-colors">about</Link>
             <Link href="#experience" className="text-secondary hover:text-foreground transition-colors">experience</Link>
             <Link href="#projects" className="text-secondary hover:text-foreground transition-colors">projects</Link>
+            <Link href="/blog" className="text-secondary hover:text-foreground transition-colors">stories</Link>
             <Link href="#contact" className="text-secondary hover:text-foreground transition-colors">contact</Link>
           </nav>
           <ThemeToggle />
@@ -51,6 +52,7 @@ const Header = () => {
             <Link href="#about" className="text-secondary hover:text-foreground transition-colors" onClick={() => setMenuOpen(false)}>about</Link>
             <Link href="#experience" className="text-secondary hover:text-foreground transition-colors" onClick={() => setMenuOpen(false)}>experience</Link>
             <Link href="#projects" className="text-secondary hover:text-foreground transition-colors" onClick={() => setMenuOpen(false)}>projects</Link>
+            <Link href="/blog" className="text-secondary hover:text-foreground transition-colors" onClick={() => setMenuOpen(false)}>stories</Link>
             <Link href="#contact" className="text-secondary hover:text-foreground transition-colors" onClick={() => setMenuOpen(false)}>contact</Link>
           </nav>
           <div className="mt-8">

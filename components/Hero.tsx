@@ -4,7 +4,7 @@ import GridBackground from './GridBackground'
 
 const Hero = () => {
   const [typedText, setTypedText] = useState('')
-  const fullText = 'Backend Engineer'
+  const fullText = 'Software Engineer'
 
   // Typing animation effect
   useEffect(() => {
@@ -31,11 +31,11 @@ const Hero = () => {
 
           {/* Terminal prompt */}
           <div className="mb-8 font-mono text-sm md:text-base text-secondary">
-            <span className="text-accent">$</span> backend_engineer.init()
+            <span className="text-accent">$</span> software_engineer.init()
           </div>
 
           {/* Main heading with typing effect */}
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-light mb-6 leading-tight text-foreground tracking-tight">
+          <h1 className="text-5xl md:text-7xl lg:text-7xl font-light mb-6 leading-tight text-foreground tracking-tight">
             <span className="font-mono">{typedText}</span>
             <span className="terminal-cursor" />
           </h1>
@@ -55,13 +55,13 @@ const Hero = () => {
                 <span className="text-secondary">name:</span> <span className="text-accent">"Akap Azmon"</span>,
               </div>
               <div className="pl-4">
-                <span className="text-secondary">role:</span> <span className="text-accent">"Backend Engineer"</span>,
+                <span className="text-secondary">role:</span> <span className="text-accent">"Software Engineer (Backend / Full-Stack)"</span>,
               </div>
               <div className="pl-4">
-                <span className="text-secondary">experience:</span> <span className="text-accent">"5+ years"</span>,
+                <span className="text-secondary">experience:</span> <span className="text-accent">"6+ years"</span>,
               </div>
               <div className="pl-4">
-                <span className="text-secondary">focus:</span> [<span className="text-accent">"APIs"</span>, <span className="text-accent">"Systems"</span>, <span className="text-accent">"Data"</span>],
+                <span className="text-secondary">focus:</span> [<span className="text-accent">"Microservices"</span>, <span className="text-accent">"APIs"</span>, <span className="text-accent">"Cloud"</span>],
               </div>
               <div className="pl-4">
                 <span className="text-secondary">available:</span> <span className="text-green-500">true</span>
@@ -72,9 +72,8 @@ const Hero = () => {
 
           {/* Description */}
           <p className="text-lg md:text-xl text-secondary mb-10 leading-relaxed max-w-2xl font-light">
-            Self-driven software developer specializing in backend systems. Built real-time medical platforms,
-            scalable web systems, and robust APIs. Focused on clean architecture, efficient data pipelines,
-            and meaningful impact.
+            Experienced full stack developer with 6+ years building scalable cloud-based microservices and web
+            applications. Proficient in Java, Spring Boot, Kotlin, React.js, and PostgreSQL.
           </p>
 
           {/* CTA Button */}

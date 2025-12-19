@@ -3,10 +3,10 @@ import React from 'react';
 
 const About = () => {
   const skills = {
-    languages: ['Go', 'Java', 'Python', 'JavaScript', 'TypeScript', 'Kotlin'],
-    frameworks: ['Spring Boot', 'Django', 'Flask', 'Node.js', 'Express.js'],
-    databases: ['PostgreSQL', 'MongoDB', 'MySQL', 'Redis'],
-    infrastructure: ['Docker', 'Kubernetes', 'AWS', 'Firebase', 'Git'],
+    languages: ['Java', 'Kotlin', 'JavaScript', 'TypeScript'],
+    frameworks: ['Spring Boot', 'Spring Framework', 'React', 'Next.js', 'Angular'],
+    databases: ['PostgreSQL', 'MySQL', 'MongoDB'],
+    infrastructure: ['AWS (EKS, ECS)', 'Docker', 'Kubernetes', 'CI/CD', 'Git', 'Linux'],
   };
 
   return (
@@ -23,9 +23,9 @@ const About = () => {
         {/* Introduction */}
         <div className="max-w-3xl mb-16 text-lg md:text-xl text-secondary font-light leading-relaxed">
           <p className="mb-6">
-            Passionate backend software developer with a focus on building efficient, scalable systems.
-            Based in Ottawa, I specialize in crafting robust APIs, optimizing data pipelines, and designing
-            clean architectures that solve real-world problems.
+            Experienced full stack developer with 6+ years building scalable cloud-based microservices and web
+            applications. Based in Ontario, Canada, I specialize in Java, Spring Boot, Kotlin, React.js, and PostgreSQL.
+            Strong collaborator with experience in cross-functional Agile teams.
           </p>
           <p>
             My journey began with curiosity about how systems work under the hood, evolving into expertise
