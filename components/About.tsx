@@ -1,108 +1,79 @@
-'use client';
-import React from 'react';
+import Image from "next/image";
+import SectionHeading from "./SectionHeading";
+import { education, skills } from "@/lib/content";
 
-const About = () => {
-  const skills = {
-    languages: ['Java', 'Kotlin', 'JavaScript', 'TypeScript'],
-    frameworks: ['Spring Boot', 'Spring Framework', 'React', 'Next.js', 'Angular'],
-    databases: ['PostgreSQL', 'MySQL', 'MongoDB'],
-    infrastructure: ['AWS (EKS, ECS)', 'Docker', 'Kubernetes', 'CI/CD', 'Git', 'Linux'],
-  };
+const About = () => (
+  <section id="about" className="border-t border-line bg-surface/50">
+    <div className="mx-auto max-w-6xl px-4 py-24 sm:px-6 md:py-32 lg:px-8">
+      <SectionHeading
+        index="02"
+        label="About"
+        title={
+          <>
+            Clear contracts, boring deploys,{" "}
+            <em className="text-accent">quick</em> responses.
+          </>
+        }
+      />
 
-  return (
-    <section id="about" className="flex flex-col items-center justify-center py-24 px-6 md:px-16 lg:px-24 w-full bg-background">
-      <div className="max-w-5xl w-full">
-        {/* Section Title */}
-        <h2 className="text-4xl md:text-5xl font-light mb-4 text-foreground tracking-tight font-mono">
-          <span className="text-secondary">$</span> cat about.json
-        </h2>
-        <p className="text-secondary mb-12 font-mono text-sm">
-          // Developer profile and technical stack
-        </p>
-
-        {/* Introduction */}
-        <div className="max-w-3xl mb-16 text-lg md:text-xl text-secondary font-light leading-relaxed">
-          <p className="mb-6">
-            Experienced full stack developer with 6+ years building scalable cloud-based microservices and web
-            applications. Based in Ontario, Canada, I specialize in Java, Spring Boot, Kotlin, React.js, and PostgreSQL.
-            Strong collaborator with experience in cross-functional Agile teams.
-          </p>
-          <p>
-            My journey began with curiosity about how systems work under the hood, evolving into expertise
-            in backend development, cloud infrastructure, and distributed systems. I value simplicity,
-            clarity, and code that speaks for itself.
+      <div className="grid gap-14 lg:grid-cols-[18rem_1fr] lg:gap-16">
+        <div>
+          <div className="relative aspect-square w-48 overflow-hidden rounded-2xl border border-line sm:w-56 lg:w-full">
+            <Image
+              src="/akap.jpeg"
+              alt="Portrait of Akap Azmon"
+              fill
+              sizes="(min-width: 1024px) 288px, 224px"
+              className="object-cover"
+            />
+          </div>
+          <p className="mt-6 max-w-sm leading-relaxed text-muted">
+            I care about the parts of a system people only notice when they
+            break: API contracts, data access, messaging and latency. I like
+            well-documented services, test-driven changes and code reviews that
+            leave everyone sharper.
           </p>
         </div>
 
-        {/* Skills as Code Block */}
-        <div className="bg-surface border border-border rounded-lg p-6 md:p-8 mb-12">
-          <div className="font-mono text-sm md:text-base">
-            <div className="line-numbers space-y-1">
-              <div className="line text-foreground">
-                <span className="text-secondary">const</span> skills = &#123;
-              </div>
-
-              {/* Languages */}
-              <div className="line pl-4 text-foreground">
-                <span className="text-secondary">languages:</span> [
-              </div>
-              {skills.languages.map((lang, idx) => (
-                <div key={lang} className="line pl-8 text-accent">
-                  "{lang}"{idx < skills.languages.length - 1 ? ',' : ''}
+        <div className="space-y-14">
+          <div>
+            <h3 className="font-mono text-xs uppercase tracking-[0.18em] text-faint">
+              Toolbox
+            </h3>
+            <dl className="mt-6 grid gap-x-10 gap-y-8 sm:grid-cols-2">
+              {skills.map((s) => (
+                <div key={s.group} className="border-t border-line pt-4">
+                  <dt className="text-sm font-medium">{s.group}</dt>
+                  <dd className="mt-2 leading-relaxed text-muted">
+                    {s.items.join(" · ")}
+                  </dd>
                 </div>
               ))}
-              <div className="line pl-4 text-foreground">],</div>
+            </dl>
+          </div>
 
-              {/* Frameworks */}
-              <div className="line pl-4 text-foreground">
-                <span className="text-secondary">frameworks:</span> [
-              </div>
-              {skills.frameworks.map((fw, idx) => (
-                <div key={fw} className="line pl-8 text-accent">
-                  "{fw}"{idx < skills.frameworks.length - 1 ? ',' : ''}
-                </div>
+          <div>
+            <h3 className="font-mono text-xs uppercase tracking-[0.18em] text-faint">
+              Education
+            </h3>
+            <ul className="mt-6 grid gap-x-10 gap-y-8 sm:grid-cols-2">
+              {education.map((e) => (
+                <li key={e.title} className="border-t border-line pt-4">
+                  <div className="font-serif text-2xl leading-tight">
+                    {e.title}
+                  </div>
+                  <div className="mt-1 text-sm text-muted">
+                    {e.school} ·{" "}
+                    <span className="font-mono text-xs">{e.years}</span>
+                  </div>
+                </li>
               ))}
-              <div className="line pl-4 text-foreground">],</div>
-
-              {/* Databases */}
-              <div className="line pl-4 text-foreground">
-                <span className="text-secondary">databases:</span> [
-              </div>
-              {skills.databases.map((db, idx) => (
-                <div key={db} className="line pl-8 text-accent">
-                  "{db}"{idx < skills.databases.length - 1 ? ',' : ''}
-                </div>
-              ))}
-              <div className="line pl-4 text-foreground">],</div>
-
-              {/* Infrastructure */}
-              <div className="line pl-4 text-foreground">
-                <span className="text-secondary">infrastructure:</span> [
-              </div>
-              {skills.infrastructure.map((infra, idx) => (
-                <div key={infra} className="line pl-8 text-accent">
-                  "{infra}"{idx < skills.infrastructure.length - 1 ? ',' : ''}
-                </div>
-              ))}
-              <div className="line pl-4 text-foreground">]</div>
-
-              <div className="line text-foreground">&#125;;</div>
-            </div>
+            </ul>
           </div>
         </div>
-
-        {/* Call to Action */}
-        <button
-          className="group font-medium px-8 py-4 bg-foreground text-background hover:bg-accent transition-all duration-300 border border-foreground hover:border-accent font-mono text-sm md:text-base inline-flex items-center gap-2"
-          onClick={() => window.open('/akap azmon.pdf', '_blank')}
-        >
-          <span>$ download_resume</span>
-          <span className="transform translate-x-0 group-hover:translate-x-1 transition-transform duration-300">→</span>
-        </button>
       </div>
-    </section>
-  );
-};
+    </div>
+  </section>
+);
 
 export default About;
-

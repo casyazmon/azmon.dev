@@ -1,96 +1,62 @@
-"use client"
-import React, { useEffect, useState } from 'react'
-import GridBackground from './GridBackground'
+import { ArrowDown, ArrowUpRight } from "lucide-react";
+import Trace from "./Trace";
+import { profile } from "@/lib/content";
 
-const Hero = () => {
-  const [typedText, setTypedText] = useState('')
-  const fullText = 'Software Engineer'
+const Hero = () => (
+  <section className="relative overflow-hidden">
+    {/* Soft accent glow */}
+    <div
+      aria-hidden="true"
+      className="pointer-events-none absolute -top-40 right-[-10%] h-[520px] w-[520px] rounded-full bg-accent-soft blur-3xl"
+    />
 
-  // Typing animation effect
-  useEffect(() => {
-    let currentIndex = 0
-    const typingInterval = setInterval(() => {
-      if (currentIndex <= fullText.length) {
-        setTypedText(fullText.slice(0, currentIndex))
-        currentIndex++
-      } else {
-        clearInterval(typingInterval)
-      }
-    }, 80)
+    <div className="relative mx-auto grid max-w-6xl items-center gap-14 px-4 pt-16 pb-20 sm:px-6 md:pt-24 lg:grid-cols-[1.1fr_1fr] lg:gap-16 lg:px-8 lg:pt-28 lg:pb-28">
+      <div>
+        <div className="rise flex items-center gap-2.5 text-sm text-muted">
+          <span className="live-dot h-2 w-2 rounded-full bg-accent" />
+          {profile.role} · {profile.location}
+        </div>
 
-    return () => clearInterval(typingInterval)
-  }, [])
+        <h1
+          className="rise mt-7 font-serif text-[3.25rem] leading-[0.98] tracking-tight sm:text-7xl lg:text-[5.5rem]"
+          style={{ animationDelay: "80ms" }}
+        >
+          Backend systems that stay <em className="text-accent">fast</em> under load.
+        </h1>
 
-  return (
-    <main className="relative overflow-hidden bg-background">
-      {/* Grid background */}
-      <GridBackground pulse />
+        <p
+          className="rise mt-7 max-w-xl text-lg leading-relaxed text-muted"
+          style={{ animationDelay: "160ms" }}
+        >
+          I&apos;m Akap, a backend engineer with 6+ years building Java and Spring Boot microservices,
+          REST APIs and event-driven systems on AWS. Currently at{" "}
+          <span className="text-ink">Intact Financial</span>, working on API performance, Kafka-based
+          integration and service contracts that other teams can rely on.
+        </p>
 
-      <div className="container mx-auto px-6 pt-32 pb-24 lg:pt-40 lg:pb-32">
-        <div className="max-w-4xl">
-
-          {/* Terminal prompt */}
-          <div className="mb-8 font-mono text-sm md:text-base text-secondary">
-            <span className="text-accent">$</span> software_engineer.init()
-          </div>
-
-          {/* Main heading with typing effect */}
-          <h1 className="text-5xl md:text-7xl lg:text-7xl font-light mb-6 leading-tight text-foreground tracking-tight">
-            <span className="font-mono">{typedText}</span>
-            <span className="terminal-cursor" />
-          </h1>
-
-          {/* Code comment style subtitle */}
-          <div className="font-mono text-lg md:text-xl text-secondary mb-8">
-            <span className="text-accent">//</span> Building scalable systems, APIs, and infrastructure
-          </div>
-
-          {/* Identity block */}
-          <div className="bg-surface border border-border rounded-lg p-6 md:p-8 mb-10 font-mono text-sm md:text-base max-w-2xl">
-            <div className="space-y-2 text-foreground">
-              <div>
-                <span className="text-secondary">const</span> developer = &#123;
-              </div>
-              <div className="pl-4">
-                <span className="text-secondary">name:</span> <span className="text-accent">"Akap Azmon"</span>,
-              </div>
-              <div className="pl-4">
-                <span className="text-secondary">role:</span> <span className="text-accent">"Software Engineer (Backend / Full-Stack)"</span>,
-              </div>
-              <div className="pl-4">
-                <span className="text-secondary">experience:</span> <span className="text-accent">"6+ years"</span>,
-              </div>
-              <div className="pl-4">
-                <span className="text-secondary">focus:</span> [<span className="text-accent">"Microservices"</span>, <span className="text-accent">"APIs"</span>, <span className="text-accent">"Cloud"</span>],
-              </div>
-              <div className="pl-4">
-                <span className="text-secondary">available:</span> <span className="text-green-500">true</span>
-              </div>
-              <div>&#125;;</div>
-            </div>
-          </div>
-
-          {/* Description */}
-          <p className="text-lg md:text-xl text-secondary mb-10 leading-relaxed max-w-2xl font-light">
-            Experienced full stack developer with 6+ years building scalable cloud-based microservices and web
-            applications. Proficient in Java, Spring Boot, Kotlin, React.js, and PostgreSQL.
-          </p>
-
-          {/* CTA Button */}
-          <button
-            type="button"
-            className="group font-medium px-8 py-4 bg-foreground text-background hover:bg-accent transition-all duration-300 border border-foreground hover:border-accent font-mono text-sm md:text-base inline-flex items-center gap-2"
-            onClick={() => window.open('/akap azmon.pdf', '_blank')}
+        <div className="rise mt-10 flex flex-wrap items-center gap-3" style={{ animationDelay: "240ms" }}>
+          <a
+            href={`mailto:${profile.email}`}
+            className="group inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-medium text-bg transition-transform hover:-translate-y-0.5"
           >
-            <span>$ download_resume</span>
-            <span className="transform translate-x-0 group-hover:translate-x-1 transition-transform duration-300">→</span>
-          </button>
-
+            Get in touch
+            <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          </a>
+          <a
+            href="#experience"
+            className="group inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm text-muted transition-colors hover:text-ink"
+          >
+            See my work
+            <ArrowDown className="h-4 w-4 transition-transform group-hover:translate-y-0.5" />
+          </a>
         </div>
       </div>
-    </main>
-  )
-}
 
-export default Hero
+      <div className="rise" style={{ animationDelay: "320ms" }}>
+        <Trace />
+      </div>
+    </div>
+  </section>
+);
 
+export default Hero;

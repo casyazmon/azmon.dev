@@ -1,25 +1,21 @@
-'use client';
-
+"use client";
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
-import { Sun, Moon } from "lucide-react";
-
+import { Moon, Sun } from "lucide-react";
 
 const ThemeToggle = () => {
-    const { theme, setTheme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
 
+  return (
+    <button
+      type="button"
+      onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
+      className="relative grid h-9 w-9 place-items-center rounded-full text-muted transition-colors hover:text-ink"
+      aria-label="Toggle color theme"
+    >
+      <Sun className="h-4 w-4 scale-100 rotate-0 transition-transform duration-300 dark:scale-0 dark:-rotate-90" />
+      <Moon className="absolute h-4 w-4 scale-0 rotate-90 transition-transform duration-300 dark:scale-100 dark:rotate-0" />
+    </button>
+  );
+};
 
-    return (
-        <button
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            className="relative p-2 rounded-lg bg-stone-100 dark:bg-stone-800 hover:bg-stone-200 dark:hover:bg-stone-700 transition-all duration-300 border border-stone-200 dark:border-stone-700"
-            aria-label="Toggle theme"
-        >
-            <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0 text-stone-800 dark:text-stone-200" />
-            <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100 text-stone-800 dark:text-stone-200" style={{ top: '0.5rem', left: '0.5rem' }} />
-            <span className="sr-only">Toggle theme</span>
-        </button>
-    )
-}
-
-export default ThemeToggle
+export default ThemeToggle;

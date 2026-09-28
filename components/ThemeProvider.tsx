@@ -1,15 +1,8 @@
-'use client';
+"use client";
+import { ThemeProvider as NextThemesProvider, ThemeProviderProps } from "next-themes";
 
-import { useEffect } from "react";
-import { ThemeProvider as NextThemesProviders, ThemeProviderProps } from "next-themes";
+const ThemeProvider = ({ children, ...props }: ThemeProviderProps) => (
+  <NextThemesProvider {...props}>{children}</NextThemesProvider>
+);
 
-const ThemeProvider = ({ children, ...props } : ThemeProviderProps) => {
-   
-    return (
-        <NextThemesProviders {...props}>
-            {children}
-        </NextThemesProviders>
-  )
-}
-
-export default ThemeProvider
+export default ThemeProvider;

@@ -1,37 +1,42 @@
-import About from '@/components/About'
-import Contact from '@/components/Contact'
-import Experience from '@/components/Experience'
-import Hero from '@/components/Hero'
-import { Projects } from '@/components/Projects'
-import SystemStatus from '@/components/SystemStatus'
-import Blog from '@/components/Blog'
-import { getAllPosts } from '@/lib/posts'
-import React from 'react'
+import About from "@/components/About";
+import Contact from "@/components/Contact";
+import Experience from "@/components/Experience";
+import Hero from "@/components/Hero";
+import Impact from "@/components/Impact";
+import JsonLd from "@/components/JsonLd";
+import Writing from "@/components/Writing";
+import { education, experience, profile, skills } from "@/lib/content";
+import { getAllPosts } from "@/lib/posts";
 
+const person = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: profile.name,
+  jobTitle: profile.role,
+  url: "https://azmon.dev",
+  email: `mailto:${profile.email}`,
+  sameAs: [profile.linkedin, profile.github],
+  address: { "@type": "PostalAddress", addressRegion: "ON", addressCountry: "CA" },
+  worksFor: experience
+    .filter((role) => role.current)
+    .map((role) => ({ "@type": "Organization", name: role.company })),
+  alumniOf: { "@type": "CollegeOrUniversity", name: education[0].school },
+  knowsAbout: skills.flatMap((s) => s.items),
+};
 
-
-
-const HomePage = () => {
-  // Fetch posts on the server
-  const posts = getAllPosts() as any[];
+export default function HomePage() {
+  const posts = getAllPosts();
+  const hasPosts = posts.length > 0;
 
   return (
-
-    <div className="flex flex-col sm:flex-row">
-      <main className="flex-1 sm:ml-[90px]">
-        {/* Content Blocks */}
-        <Hero />
-        <SystemStatus />
-        <About />
-        <Experience />
-        <Projects />
-        <Blog posts={posts} />
-        <Contact />
-      </main>
-    </div>
-
-
-  )
+    <>
+      <JsonLd data={person} />
+      <Hero />
+      <Impact />
+      <Experience />
+      <About />
+      {hasPosts && <Writing posts={posts} index="03" />}
+      <Contact index={hasPosts ? "04" : "03"} />
+    </>
+  );
 }
-
-export default HomePage

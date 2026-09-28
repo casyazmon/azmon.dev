@@ -1,78 +1,61 @@
-import { Mail, PhoneForwarded } from 'lucide-react'
-import React from 'react'
+import { ArrowUpRight } from "lucide-react";
+import CopyEmail from "./CopyEmail";
+import { profile } from "@/lib/content";
 
-const Contact = () => {
-  return (
-    <section className="bg-surface py-24 px-6" id="contact">
-      <div className="container mx-auto max-w-4xl">
-        <h2 className="text-4xl md:text-5xl font-light text-foreground mb-4 tracking-tight font-mono">
-          <span className="text-secondary">$</span> curl -X POST /contact
-        </h2>
-        <p className="text-secondary mb-12 font-mono text-sm">
-          // API endpoint for getting in touch
-        </p>
+const elsewhere = [
+  { label: "LinkedIn", href: profile.linkedin },
+  { label: "GitHub", href: profile.github },
+  { label: "Résumé", href: profile.resume },
+];
 
-        {/* API Request/Response Format */}
-        <div className="bg-background border border-border rounded-lg p-6 md:p-8 mb-8">
-          <div className="font-mono text-sm md:text-base space-y-2">
-            <div className="text-secondary">POST /contact HTTP/1.1</div>
-            <div className="text-secondary">Host: azmon.dev</div>
-            <div className="text-secondary">Content-Type: application/json</div>
-            <div className="my-4" />
-            <div className="text-foreground">&#123;</div>
-            <div className="pl-4 text-foreground">
-              <span className="text-secondary">"email":</span> <span className="text-accent">"akap@azmon.dev"</span>,
-            </div>
-            <div className="pl-4 text-foreground">
-              <span className="text-secondary">"phone":</span> <span className="text-accent">"+1-506-269-8812"</span>,
-            </div>
-            <div className="pl-4 text-foreground">
-              <span className="text-secondary">"location":</span> <span className="text-accent">"Toronto, CA"</span>,
-            </div>
-            <div className="pl-4 text-foreground">
-              <span className="text-secondary">"availability":</span> <span className="text-green-500">true</span>
-            </div>
-            <div className="text-foreground">&#125;</div>
-            <div className="my-4" />
-            <div className="text-green-500">Response: 200 OK</div>
-          </div>
-        </div>
-
-        {/* Contact Cards */}
-        <div className="grid md:grid-cols-2 gap-6">
-          <a
-            href="mailto:akap@azmon.dev"
-            className="flex items-start gap-4 bg-background border border-border p-6 hover:border-foreground transition-colors duration-300 group"
-          >
-            <div className="p-3 bg-surface border border-border">
-              <Mail className="w-6 h-6 text-foreground" />
-            </div>
-            <div>
-              <h3 className="text-lg font-mono text-foreground mb-1">Email</h3>
-              <p className="text-secondary font-mono text-sm group-hover:text-foreground transition-colors">
-                akap@azmon.dev
-              </p>
-            </div>
-          </a>
-
-          <a
-            href="tel:+15062698812"
-            className="flex items-start gap-4 bg-background border border-border p-6 hover:border-foreground transition-colors duration-300 group"
-          >
-            <div className="p-3 bg-surface border border-border">
-              <PhoneForwarded className="w-6 h-6 text-foreground" />
-            </div>
-            <div>
-              <h3 className="text-lg font-mono text-foreground mb-1">Phone</h3>
-              <p className="text-secondary font-mono text-sm group-hover:text-foreground transition-colors">
-                +1 (506) 269-8812
-              </p>
-            </div>
-          </a>
-        </div>
+const Contact = ({ index }: { index: string }) => (
+  <section id="contact" className="border-t border-line">
+    <div className="mx-auto max-w-6xl px-4 py-24 sm:px-6 md:py-36 lg:px-8">
+      <div className="flex items-center gap-3 font-mono text-xs uppercase tracking-[0.18em] text-faint">
+        <span className="text-accent">{index}</span>
+        <span className="h-px w-8 bg-line" />
+        <span>Contact</span>
       </div>
-    </section>
-  )
-}
 
-export default Contact
+      <h2 className="mt-5 max-w-4xl font-serif text-5xl leading-[1] tracking-tight md:text-7xl lg:text-8xl">
+        Need a backend engineer? <em className="text-accent">Let&apos;s talk.</em>
+      </h2>
+
+      <p className="mt-8 max-w-xl text-lg leading-relaxed text-muted">
+        I&apos;m open to conversations about backend and platform roles, as well as API and performance
+        work. Email is the fastest way to reach me.
+      </p>
+
+      <div className="mt-12 flex flex-col items-start gap-5 sm:flex-row sm:items-center">
+        <a
+          href={`mailto:${profile.email}`}
+          className="group inline-flex items-center gap-3 font-serif text-3xl tracking-tight sm:text-4xl md:text-5xl"
+        >
+          <span className="border-b-2 border-accent pb-1 transition-colors group-hover:text-accent">
+            {profile.email}
+          </span>
+          <ArrowUpRight className="h-7 w-7 text-accent transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+        </a>
+        <CopyEmail email={profile.email} />
+      </div>
+
+      <ul className="mt-16 flex flex-wrap gap-x-8 gap-y-3 border-t border-line pt-8">
+        {elsewhere.map((link) => (
+          <li key={link.label}>
+            <a
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-1 text-sm text-muted transition-colors hover:text-ink"
+            >
+              {link.label}
+              <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+);
+
+export default Contact;
